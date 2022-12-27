@@ -1,0 +1,99 @@
+var blocks = [
+  {
+    gym: false,
+    school: true,
+    store: false,
+  },
+  {
+    gym: true,
+    school: false,
+    store: false,
+  },
+  {
+    gym: true,
+    school: true,
+    store: false,
+  },
+  {
+    gym: false,
+    school: true,
+    store: false,
+  },
+  {
+    gym: false,
+    school: true,
+    store: true,
+  },
+];
+var reqs = ["gym", "school", "store"];
+
+function apartmentHunting(blocks, reqs) {
+ let minDistance = Infinity;
+  let optimalBlockIndex = -1;
+
+  for (let i = 0; i < blocks.length; i++) {
+    let maxDistance = 0;
+    for (let j = 0; j < reqs.length; j++) {
+      let req = reqs[j];
+      let distance = findDistanceToReq(blocks, i, req);
+      if (distance > maxDistance) {
+        maxDistance = distance;
+      }
+    }
+    if (maxDistance < minDistance) {
+      minDistance = maxDistance;
+      optimalBlockIndex = i;
+    }
+  }
+  return optimalBlockIndex;
+}
+
+function findDistanceToReq(blocks, startIndex, req) {
+  let left = startIndex - 1;
+  let right = startIndex + 1;
+  while (left >= 0 || right < blocks.length) {
+    if (left >= 0 && blocks[left][req]) {
+      return startIndex - left;
+    }
+    if (right < blocks.length && blocks[right][req]) {
+      return right - startIndex;
+    }
+    left--;
+    right++;
+  }
+  return Infinity;
+}
+
+// Do not edit the line below.
+exports.apartmentHunting = apartmentHunting;
+
+Explanation:->
+This code defines a function called "apartmentHunting" that takes in two arguments: an array of objects called 
+"blocks", and an array of strings called "reqs". The "blocks" array represents a list of blocks in a city, and 
+each object in the array represents a single block. Each object in the array has three properties: "gym", "school",
+and "store", which are all boolean values indicating whether or not the corresponding amenity is present on that 
+block. The "reqs" array represents a list of amenities that the person looking for an apartment wants to be near.
+
+The "apartmentHunting" function uses a nested loop to iterate through the "blocks" array and find the block that 
+is closest to all of the amenities in the "reqs" array. To do this, it first initializes two variables: "minDistance"
+and "optimalBlockIndex". "minDistance" is set to "Infinity", and "optimalBlockIndex" is set to "-1".
+
+The outer loop iterates through each block in the "blocks" array and assigns the current block to the variable "i". 
+For each block, the inner loop iterates through each amenity in the "reqs" array and assigns the current amenity to 
+the variable "req". It then calls a helper function called "findDistanceToReq" and passes in the "blocks" array, 
+the index of the current block "i", and the current amenity "req" as arguments.
+
+The "findDistanceToReq" function searches for the nearest block that has the specified amenity by starting at the 
+block with the given index and moving outward in both directions. It does this using two pointers called "left" 
+and "right", which represent the indices of the blocks immediately to the left and right of the current block. 
+The function iterates until it finds a block that has the amenity or until it has searched through all blocks. 
+If it finds a block with the amenity, it returns the distance between that block and the current block. 
+If it does not find a block with the amenity, it returns "Infinity".
+
+After the inner loop has completed, the "apartmentHunting" function compares the maximum distance to an amenity 
+for the current block to the current minimum distance. If the maximum distance is smaller than the minimum distance, 
+the "minDistance" variable is updated to the new maximum distance and the "optimalBlockIndex" variable is updated to 
+the index of the current block.
+
+Finally, the "apartmentHunting" function returns the "optimalBlockIndex", which is the index of the block that is 
+closest to all of the amenities in the "reqs" array.

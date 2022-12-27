@@ -1,9 +1,9 @@
-In the output screen shot you can see all code on left side and output in terminal of right side.
+**In the output screen shot you can see all code on left side and output in terminal of right side.**
 
 ![Capture](https://user-images.githubusercontent.com/94825943/209705030-12f93472-e316-4087-b2ed-425fb653a7a8.JPG)
 
 
-Description of Task:
+**Description of Task:**
 
 You're looking to move into a new apartment on specific street, and you're given a list of contiguous blocks on that street where
 each block contains an apartment that you could move into.
@@ -51,8 +51,8 @@ blocks = [
 ]
 reqs = ["gym", "school", "store"]
 
-Sample Output
+**Sample Output**
 3 // at index 3, the farthest you'd have to walk to reach a gym, a school, or a store is 1 block; at any other index, you'd have to walk farther
 
 
-In the Solution.Txt file you can see all the code and in the bottom i explain all the code in briefly
+**In the Solution.Txt file you can see all the code and in the bottom i explain all the code in briefly.**
